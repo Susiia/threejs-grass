@@ -4,9 +4,9 @@
  * @Author: 刘译蓬
  * @Date: 2022-05-26 16:29:25
  * @LastEditors: 刘译蓬
- * @LastEditTime: 2022-07-19 19:45:17
+ * @LastEditTime: 2022-07-19 20:51:49
  */
-import { Color, EquirectangularReflectionMapping, PerspectiveCamera, Scene, TextureLoader, Vector3, WebGLRenderer } from 'three'
+import { Color, EquirectangularReflectionMapping, Mesh, PerspectiveCamera, Scene, TextureLoader, Vector3, WebGLRenderer } from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import { CollisionController } from './octreeCollision'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -116,8 +116,7 @@ export default class ThreeAssets {
     // 模型处理
     private modelTreatment(model:GLTF){
       if(model.scene.getObjectByName('平面')){
-        //  @ts-ignore
-        this.grasses = new makeGrass(this.scene,model.scene.getObjectByName('平面'),250000)
+        this.grasses = new makeGrass(this.scene,model.scene.getObjectByName('平面') as Mesh,250000)
       }
     }
 }
