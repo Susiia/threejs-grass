@@ -4,7 +4,7 @@
  * @Author: 刘译蓬
  * @Date: 2022-05-26 16:29:25
  * @LastEditors: 刘译蓬
- * @LastEditTime: 2022-07-19 20:51:49
+ * @LastEditTime: 2022-07-19 20:54:01
  */
 import { Color, EquirectangularReflectionMapping, Mesh, PerspectiveCamera, Scene, TextureLoader, Vector3, WebGLRenderer } from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
@@ -116,7 +116,11 @@ export default class ThreeAssets {
     // 模型处理
     private modelTreatment(model:GLTF){
       if(model.scene.getObjectByName('平面')){
-        this.grasses = new makeGrass(this.scene,model.scene.getObjectByName('平面') as Mesh,250000)
+        this.grasses = new makeGrass(
+          this.scene, // 场景
+          model.scene.getObjectByName('平面') as Mesh, // 需要生草的mesh，类型需为Mesh
+          250000 // 生草数量
+          )
       }
     }
 }
